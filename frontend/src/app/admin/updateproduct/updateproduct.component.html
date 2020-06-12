@@ -1,0 +1,44 @@
+
+<div style="text-align:center">
+    <h1>
+      Update Product 
+    </h1>
+   </div>
+   <div style="margin:20px 50px 20px 50px;">
+  <form #Productform="ngForm" (ngSubmit)="onEdit(Productform)" enctype="multipart/form-data">
+      <input type="hidden" name="_id" #_id="ngModel" ngModel [(ngModel)]="selectedProduct._id">
+    <div class="form-group">
+      <label for="Product">Product Name</label>
+      <input type="text" name="fname" #qname="ngModel" ngModel [(ngModel)]="selectedProduct.fname" class="form-control" id="inputdefault" placeholder="Product Name">
+    </div>
+    <div class="form-group">
+      <label for="Product">Product Description</label>
+      <input type="text" name="fdesc" #qname="ngModel" ngModel [(ngModel)]="selectedProduct.fdesc" class="form-control" id="inputdefault" placeholder="Product Description">
+    </div>
+    <div class="form-group">
+      <label for="Product">Product Price</label>
+      <input type="text" name="fprice" #qname="ngModel" ngModel [(ngModel)]="selectedProduct.fprice" class="form-control" id="inputdefault" placeholder="Product Price">
+    </div>
+    <div class="form-group">
+      <label for="Product">Product Old Picture</label>
+      <img [src]="getSafeUrl(selectedProduct.fpic)" height="100" width="100">
+    </div>
+  
+    <div class="form-group">
+      <label for="Product">Product Picture</label>
+      <input type="file" name="photo"   class="form-control" id="inputdefault" (change)="onfileselect($event)" />
+    </div>
+    <div class="form-group">
+      <label for="Product">Product Category</label>
+            <select [(ngModel)]="selectedProduct.category_id" name="Product" class="form-control"> 
+                  <option [selected]="selectedProduct.category_id == 'select'" [value] = " true ">SELECT CATEGORY</option>  
+          <option  *ngFor="let cat of category" [value]="cat.categoryname">{{cat.categoryname}}</option>
+              </select>
+          </div>
+  
+    <div class="form-group">
+      <input type="submit" class="form-control btn btn-success" id="inputdefault">
+    </div>
+  </form>
+  </div>
+  
